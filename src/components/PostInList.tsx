@@ -9,15 +9,10 @@ interface Props {
     post:Post
     onDelete?: () => void
 }
-
-function PostInList({post}:Props) {
+// {post}:Props
+function PostInList() {
     // const [remove, setRemove] = useState(false)
-    const [title, setTitle] = useState("")
-    const [thought, setThought] = useState("")
-    const [post, setPost] =
-    //  post = postArray.map((post) => <div>{post.title}{post.thought}</div>)
-    setThought(prev => [])
-
+    const [addposts, setPostArray] = useState(postArray)
 
     function OnDelete(post:Post) {
         // postArray.splice(post)
@@ -25,6 +20,9 @@ function PostInList({post}:Props) {
     return( 
         <div>
             <ul>
+                {postArray.map((post) => 
+                    <div>{post.title}{post.thought}</div>
+                )}
 
             </ul>
             <div>
