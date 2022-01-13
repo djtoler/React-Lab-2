@@ -8,26 +8,26 @@ import { title } from 'process'
 
 
 
-export const postArray: Post[] = [
+// export const postArray: Post[] = [
+//     {title: "happy today", thought: "i am so happy today"},
+//     {title: "excited today", thought: "i am so excited today"}
+// ]
+
+export const [postArray, setPostArray] = useState([
     {title: "happy today", thought: "i am so happy today"},
-    {title: "excited today", thought: "i am so excited today"}
-]
+    {title: "excited today", thought: "i am so excited today"
+}])
 function SocialPosts() {
     
-
+   
 
     function OnSubmit(newPost:Post) {
-        postArray.push(newPost)
-        console.log(postArray);
-        console.log( "newPost = " + newPost.thought);
-        console.log( "newPost = " + newPost.title);
-
-        
-        
-        
-        // return newPost
-        
-        
+        setPostArray((prev)=>[...prev, newPost])
+        // postArray.push(newPost)
+        // console.log(postArray);
+        // console.log( "newPost = " + newPost.thought);
+        // console.log( "newPost = " + newPost.title);
+        // // return newPost 
     }
 
     return(
