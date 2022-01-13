@@ -6,17 +6,13 @@ import {postArray} from "./SocialPosts"
 
 
 interface Props {
-    post:Post
+    post:Post[]
     onDelete?: () => void
 }
-// {post}:Props
-function PostInList() {
-    // const [remove, setRemove] = useState(false)
-    const [addposts, setPostArray] = useState(postArray)
 
-    function OnDelete(post:Post) {
-        // postArray.splice(post)
-    }
+function PostInList(  {post}:Props   ) {
+console.log("hi");
+
     return( 
         <div>
             <ul>

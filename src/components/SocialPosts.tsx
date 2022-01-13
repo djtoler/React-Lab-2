@@ -4,6 +4,8 @@ import { useState } from 'react'
 import PostInList from "./PostInList"
 import PostForm  from "./PostForm"
 import Post from '../models/post'
+import { title } from 'process'
+
 
 
 export const postArray: Post[] = [
@@ -14,17 +16,16 @@ function SocialPosts() {
     
 
 
-    function OnSubmit(post:Post) {
-        
-        postArray.push(post)
+    function OnSubmit(newPost:Post) {
+        postArray.push(newPost)
         console.log(postArray);
+        console.log( "newPost = " + newPost.thought);
+        console.log( "newPost = " + newPost.title);
 
-        console.log( "newPost = " + post);
-
         
         
         
-        return postArray
+        // return newPost
         
         
     }
@@ -33,7 +34,7 @@ function SocialPosts() {
         <div>
             <h1>My Thoughts</h1>
             <PostForm onSubmit={OnSubmit}/>
-            <PostInList post={{title, thought}} />
+            <PostInList post={postArray} />
         </div>
     )
         
