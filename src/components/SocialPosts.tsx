@@ -32,7 +32,7 @@ function SocialPosts() {
 
     function onClose() {
         console.log("hello");
-        setThoughtClicked(false)
+        setIsClosed(false)
     }
 
     const deleteHandler = (index: number) => {
