@@ -1,6 +1,6 @@
 // import Post from './models/post'
 import { useState } from 'react'
-
+import './SocialPosts.css'
 import PostInList from "./PostInList"
 import PostForm  from "./PostForm"
 import Post from '../models/post'
@@ -13,28 +13,46 @@ import { title } from 'process'
 //     {title: "excited today", thought: "i am so excited today"}
 // ]
 
-export const [postArray, setPostArray] = useState([
-    {title: "happy today", thought: "i am so happy today"},
-    {title: "excited today", thought: "i am so excited today"
-}])
+
 function SocialPosts() {
-    
+
+    const [isClosed, setIsClosed] = useState<Boolean>(true)
+
+    const [postArray, setPostArray] = useState([
+        {title: "happy today", thought: "i am so happy today"},
+        {title: "excited today", thought: "i am so excited today"
+    }])
    
 
     function OnSubmit(newPost:Post) {
         setPostArray((prev)=>[...prev, newPost])
-        // postArray.push(newPost)
-        // console.log(postArray);
-        // console.log( "newPost = " + newPost.thought);
-        // console.log( "newPost = " + newPost.title);
-        // // return newPost 
+        console.log(postArray);
+        
+    }
+
+    function onClose() {
+        console.log("hello");
+        setThoughtClicked(false)
+    }
+
+    const deleteHandler = (index: number) => {
+        setPostArray(prev => {
+            const newPosts = prev.slice(0);
+            newPosts.splice (index, 1);
+            return newPosts;
+        })
     }
 
     return(
         <div>
             <h1>My Thoughts</h1>
-            <PostForm onSubmit={OnSubmit}/>
-            <PostInList post={postArray} />
+            <PostForm 
+            onSubmit={OnSubmit}
+            onClose={onClose}
+            close={isClosed}/>
+            {postArray.map((post, i) => 
+            <PostInList onDelete={() => 
+            deleteHandler(i)} key={i} post={post}/>)}
         </div>
     )
         

@@ -2,27 +2,24 @@ import PostForm  from "./PostForm"
 import Post from "../models/post"
 import React, { useState } from 'react';
 import SocialPosts from "./SocialPosts"
-import {postArray} from "./SocialPosts"
+
 
 
 interface Props {
-    post:Post[]
+    post:Post
     onDelete?: () => void
 }
 
-function PostInList(  {post}:Props   ) {
-console.log("hi");
+function PostInList(  {post, onDelete}:Props   ) {
+
 
     return( 
         <div>
-            <ul>
-                {postArray.map((post) => 
-                    <div>{post.title}{post.thought}</div>
-                )}
-
-            </ul>
-            <div>
-                <button>Trash</button>
+            <div className="animate__animated animate__slideInUp">
+                <div className="PostDiv" >
+                    {post.title} --- {post.thought}
+                    <button className="fa fa-trash-o" onClick={onDelete}></button>
+                </div>
             </div>
         </div>
     )
